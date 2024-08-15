@@ -1,0 +1,31 @@
+      
+          <form action="" method="post">
+            <table>
+                <tr>
+                    <th>What are you looking for?</th>
+                    <td>
+                        <input type="text" name="search" placeholder="Type to search for a Fish" style="padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                        <input type="submit" name="submit" value="Search" style="padding: 10px 20px; background-color: #3498db; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    
+
+<h1>Search Result</h1>
+{% for i in data['search']%}
+<div class="card">
+    <img src="{{ i['image'] }}" alt="">
+    <div class="card-content">
+ 
+        <p><strong>si no:</strong> {{loop.index }}</p>
+        <p><strong>Category:</strong> {{ i['category_name'] }}</p>
+        <p><strong>Fish name:</strong> {{ i['fish_name'] }}</p>
+        <p><strong>Details:</strong> {{ i['description'] }}</p>
+        <p><strong>Date:</strong> {{ i['date'] }}</p>
+        <p><strong>Price:</strong> {{ i['amount'] }}</p>
+        <button type="button">Add to Cart</button>
+    </div>
+</div>
+{%endfor%}

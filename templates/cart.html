@@ -1,0 +1,159 @@
+{%include 'buyer_header1.html'%}
+<br><br><br><br><br><br><br>
+<style>
+    body {
+        background-color: #42a1c6;
+      }
+      
+      /* Franklin's Container */
+      .fish {
+ 
+      }
+      
+      /* Franklin */
+      .fish-body {
+    
+      }
+      
+   
+      .fin {
+    
+      }
+      
+      .fin-bottom {
+        margin-top: -10px;
+        transform: rotate(-40deg);
+      }
+      
+      /* Bubbles */
+      .bubbles {
+        position: absolute;
+        bottom: 0;
+        z-index: 5;
+        margin-right: 50px;
+        background-color: white;
+        border-radius: 50%;
+        opacity: .50;
+        width: 40px;
+        height: 40px;
+        animation: up 4s infinite;
+      }
+      
+      .bubble-2 {
+        left: 350px;
+        animation: up 2s infinite;
+      }
+      
+      .bubble-3 {
+        left: 750px;
+        opacity: .30;
+        animation: up 5s infinite;
+      }
+      
+      .bubble-4 {
+        left: 1150px;
+        animation: up 6s infinite;
+      }
+      
+      .bubble-5 {
+        left: 50px;
+        animation: up 5s infinite;
+      }
+      
+      .bubble-6 {
+        left: 300px;
+        opacity: .30;
+        animation: up 3s infinite;
+      }
+      
+      .bubble-7 {
+        left: 670px;
+        animation: up 4s infinite;
+      }
+      
+      .bubble-8 {
+        left: 1050px;
+        opacity: .30;
+        animation: up 3s infinite;
+      }
+      
+      /* Swim Animation */
+      @keyframes swim {
+        0% {
+          transform: translateY(-50px) translateX(0) rotate(30deg);
+        }
+        25% { 
+          transform: translateY(50px) translateX(250px) rotate(20deg);
+        }
+        50% {
+          transform: translateY(100px) translateX(500px);
+        }
+        75% {
+          transform: translateY(50px) translateX(850px) rotate(-20deg);
+        }
+        100% {
+          transform: translateY(-170px) translateX(1200px) rotate(-40deg);
+        }
+      }
+      
+      /* Bubbles Animation */
+      @keyframes up {
+        100% {
+          transform: translateY(-800px);
+        }
+      }
+      
+</style>
+<div class="fish">
+    <div class="fish-body">
+      <div class="eye">
+        <div class="pupil"></div>
+      </div>
+    </div>
+    <div class="fin"></div>
+    <div class="fin fin-bottom"></div>
+  </div>
+  
+  <div class="bubbles bubble-1"></div>
+  <div class="bubbles bubble-5"></div>
+  <div class="bubbles bubble-2"></div>
+  <div class="bubbles bubble-6"></div>
+  <div class="bubbles bubble-3"></div>
+  <div class="bubbles bubble-7"></div>
+  <div class="bubbles bubble-4"></div>
+  <div class="bubbles bubble-8"></div>
+<br><br><br>
+
+   
+{% if data['fish']%}
+<h1 align="center" >Add to Cart</h1>
+<form action="" method="post" onsubmit="calculateAmount()" class="table-info " style="margin-top: 100px;">
+    <table>
+        <tr>
+            <th>Quantity</th>
+            <td><input type="text" name="quantity" id="quantity" oninput="calculateAmount()"></td>
+        </tr>
+        <tr>
+            <th>Amount</th>
+            <td><input type="text" name="amount" id="amount"  readonly></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td colspan="2" align="center"> <input type="submit" name="submit" value="Add to cart" class="reply-button"></td>
+        </tr>
+    </table>
+</form>
+{%endif%}
+
+<script>
+    function calculateAmount() {
+        var quantity = document.getElementById("quantity").value;
+        var amountPerItem = parseFloat("{{data['fish'][0]['amount']}}"); // Assuming amount is a floating-point number
+
+        if (!isNaN(quantity)) {
+            var totalAmount = quantity * amountPerItem;
+            document.getElementById("amount").value = totalAmount.toFixed(2); // Adjust the number of decimal places as needed
+        }
+    }
+</script>
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Kerala District Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="kerala_districts.geojson"></script>
+<script src="map.js"></script>
+
+</body>
+</html>
+
+
+<script>
+    var map = L.map('map').setView([10.8505, 76.2711], 7); // Centered at Kerala, zoom level 7
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Load GeoJSON data
+var geojsonLayer = L.geoJSON(keralaDistricts).addTo(map);
+
+// Style for district polygons
+function style(feature) {
+    return {
+        fillColor: 'green',
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        fillOpacity: 0.7
+    };
+}
+
+// Apply style to each district feature
+geojsonLayer.eachLayer(function(layer) {
+    layer.setStyle(style);
+});
+R
+</script>

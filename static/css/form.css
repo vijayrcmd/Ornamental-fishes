@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+
+
+
+
+
+input[type="text"], input[type="submit"] {
+    padding: 8px;
+    margin: 5px 0;
+}
+.delete-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+  }
+
+  /* Hover effect */
+  .delete-button:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+
+  /* Icon style */
+  .delete-icon {
+    margin-right: 8px; /* Adjust margin as needed */
+  }
+  .update-button {
+    display: inline-block;
+    padding: 8px 16px; /* Adjust padding as needed */
+    background-color: #007bff; /* Choose your desired background color */
+    color: #fff; /* Choose your desired text color */
+    text-decoration: none;
+    border: 1px solid #007bff; /* Border color matches background color */
+    border-radius: 4px; /* Adjust border-radius for rounded corners */
+  }
+
+  /* Hover effect */
+  .update-button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+    border-color: #004080; /* Darker border color on hover */
+  }
+  .link-button {
+    display: inline-block;
+    padding: 8px 16px; /* Adjust padding as needed */
+    background-color: #ffae00; /* Choose your desired background color */
+    color: #fff; /* Choose your desired text color */
+    text-decoration: none;
+    border: 1px solid #007bff; /* Border color matches background color */
+    border-radius: 4px; /* Adjust border-radius for rounded corners */
+  }
+
+  /* Hover effect */
+  .link-button:hover {
+    background-color: #dfa909; /* Darker color on hover */
+    border-color: #800000; /* Darker border color on hover */
+  } 
+
+  .reply-button {
+    display: inline-block;
+    padding: 8px 16px; /* Adjust padding as needed */
+    background-color: #157c1e; /* Choose your desired background color */
+    color: #fff; /* Choose your desired text color */
+    text-decoration: none;
+    border: 1px solid #066435; /* Border color matches background color */
+    border-radius: 4px; /* Adjust border-radius for rounded corners */
+  }
+
+  /* Hover effect */
+  .reply-button:hover {
+    background-color: #0c5632; /* Darker color on hover */
+    border-color: #0c0101; /* Darker border color on hover */
+  } 

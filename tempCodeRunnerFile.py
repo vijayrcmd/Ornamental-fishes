@@ -1,0 +1,2 @@
+
+@app.errorhandler(404

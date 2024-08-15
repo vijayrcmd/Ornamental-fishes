@@ -1,0 +1,247 @@
+{%include 'buyer_header1.html'%} <br /><br /><br /><br /><br />
+<style>
+    body {
+        background-color: #42a1c6;
+    }
+
+    /* Franklin's Container */
+    .fish {
+        width: 150px;
+        height: 100px;
+        animation: swim 3s infinite;
+    }
+
+    /* Franklin */
+    .fish-body {
+        position: relative;
+        margin-top: 30px;
+        margin-left: 40px;
+        background-color: orange;
+        border-radius: 50%;
+        width: 150px;
+        height: 100px;
+    }
+
+    .eye {
+        position: absolute;
+        margin-left: 100px;
+        margin-top: 20px;
+        z-index: 1;
+        background-color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .pupil {
+        position: absolute;
+        z-index: 2;
+        margin-left: 5px;
+        margin-top: 5px;
+        background-color: black;
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+    }
+
+    .fin {
+        margin-top: -100px;
+        background-color: orange;
+        border-radius: 50%;
+        transform: rotate(40deg);
+        width: 80px;
+        height: 50px;
+    }
+
+    .fin-bottom {
+        margin-top: -10px;
+        transform: rotate(-40deg);
+    }
+
+    /* Bubbles */
+    .bubbles {
+        position: absolute;
+        bottom: 0;
+        z-index: 5;
+        margin-right: 50px;
+        background-color: white;
+        border-radius: 50%;
+        opacity: 0.5;
+        width: 40px;
+        height: 40px;
+        animation: up 4s infinite;
+    }
+
+    .bubble-2 {
+        left: 350px;
+        animation: up 2s infinite;
+    }
+
+    .bubble-3 {
+        left: 750px;
+        opacity: 0.3;
+        animation: up 5s infinite;
+    }
+
+    .bubble-4 {
+        left: 1150px;
+        animation: up 6s infinite;
+    }
+
+    .bubble-5 {
+        left: 50px;
+        animation: up 5s infinite;
+    }
+
+    .bubble-6 {
+        left: 300px;
+        opacity: 0.3;
+        animation: up 3s infinite;
+    }
+
+    .bubble-7 {
+        left: 670px;
+        animation: up 4s infinite;
+    }
+
+    .bubble-8 {
+        left: 1050px;
+        opacity: 0.3;
+        animation: up 3s infinite;
+    }
+
+    /* Swim Animation */
+    @keyframes swim {
+        0% {
+            transform: translateY(-50px) translateX(0) rotate(30deg);
+        }
+        25% {
+            transform: translateY(50px) translateX(250px) rotate(20deg);
+        }
+        50% {
+            transform: translateY(100px) translateX(500px);
+        }
+        75% {
+            transform: translateY(50px) translateX(850px) rotate(-20deg);
+        }
+        100% {
+            transform: translateY(-170px) translateX(1200px) rotate(-40deg);
+        }
+    }
+
+    /* Bubbles Animation */
+    @keyframes up {
+        100% {
+            transform: translateY(-800px);
+        }
+    }
+</style>
+<div class="fish">
+    <div class="fish-body">
+        <div class="eye">
+            <div class="pupil"></div>
+        </div>
+    </div>
+    <div class="fin"></div>
+    <div class="fin fin-bottom"></div>
+</div>
+
+<div class="bubbles bubble-1"></div>
+<div class="bubbles bubble-5"></div>
+<div class="bubbles bubble-2"></div>
+<div class="bubbles bubble-6"></div>
+<div class="bubbles bubble-3"></div>
+<div class="bubbles bubble-7"></div>
+<div class="bubbles bubble-4"></div>
+<div class="bubbles bubble-8"></div>
+<br /><br /><br /><br />
+
+<center>
+    <h1>Category Filter</h1>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>filter</th>
+                <td>
+                    <select name="category" id="">
+                        {% for i in data['cat']%}
+                        <option value="{{i['category_name']}}">{{i['category_name']}}</option>
+                        {%endfor%}
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <td align="center" colspan="2">
+                    <input type="submit" name="fill" value="Fiiter" class="btn btn-primary" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <h1>Price Range</h1>
+
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Min price</th>
+
+                <td><input type="text" name="min" /></td>
+            </tr>
+            <tr>
+                <th>max price</th>
+                <td><input type="text" name="max" /></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td align="center" colspan="2"><input type="submit" name="price" value="set" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+    </form>
+    <style>
+        .card {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            width: 300px; /* Adjust the width as needed */
+            display: inline-block;
+            text-align: center;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .card a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+
+    {% for i in data['search']%}
+    <div class="card">
+        <img src="{{ i['image'] }}" alt="" />
+        <div class="card-content">
+            <p><strong>si no:</strong> {{loop.index }}</p>
+            <p><strong>Category:</strong> {{ i['category_name'] }}</p>
+            <p><strong>Fish name:</strong> {{ i['fish_name'] }}</p>
+            <p><strong>Details:</strong> {{ i['description'] }}</p>
+            <p><strong>Date:</strong> {{ i['date'] }}</p>
+            <p><strong>Price:</strong> {{ i['amount'] }}</p>
+
+            <td>
+                <a href="/cart?fish_id={{i['fish_id']}}&amt={{i['amount']}}&seller_id={{i['seller_id']}}">Add to Cart</a>
+            </td>
+        </div>
+    </div>
+    {%endfor%}
+    <br /><br /><br />
+</center>
+
+{%include 'footer.html'%}
